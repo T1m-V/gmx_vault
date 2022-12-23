@@ -4,12 +4,10 @@ from web3 import HTTPProvider, Web3
 
 from func_file_ut import open_file
 
-# Connect to web3
+# Connect to web30
 api = open_file("input/private/api.txt")
 
-w3 = Web3(
-    HTTPProvider(f"https://soft-muddy-wildflower.arbitrum-mainnet.discover.quiknode.pro/{api}/")
-)
+w3 = Web3(HTTPProvider(api))
 
 # Read ABI from JSON files
 with open("input/abi/abi_usdc.json") as f:
@@ -60,6 +58,3 @@ for token in gmx_vault_address_list:
         my_percentage * gmx_vault_address_list[token]["gmx_vault_supply"]
     )
     print(f"{gmx_vault_address_list[token]['my_balance']} {token}")
-
-print(supply_glp / 10**18)
-print(balance_fee_staked_glp / 10**18)
